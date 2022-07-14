@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+}
+
+/* Button Blurred */
+.btn-blurred__wrapper {
+  position: relative;
+  pointer-events: all;
+}
+
+.btn-blurred {
+  position: relative;
+  display: inline-block;
+  border: none;
+  padding: 32px 48px;
+  color: white;
+  background-color: transparent;
+  font-size: 32px;
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.btn-blurred__wrapper:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  border-radius: 64px;
+  z-index: 1;
+  filter: blur(0);
+  transition: 0.2s linear;
+  pointer-events: none;
+}
+
+.btn-blurred__text {
+  display: inline-block;
+  pointer-events: none;
+  transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-blurred__text:first-child {
+  position: relative;
+  z-index: 2;
+}
+
+.btn-blurred__text:last-child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 200%);
+  width: max-content;
+  color: white;
+  z-index: 2;
+}
+
+.btn-blurred__wrapper:hover:before {
+  filter: blur(26px);
+}
+
+.btn-blurred__wrapper:hover .btn-blurred__text:last-child {
+  transform: translate(-50%, -50%);
+}
+.btn-blurred__wrapper:hover .btn-blurred__text:first-child {
+  transform: translateY(-200%);
+}
