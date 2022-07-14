@@ -1,20 +1,33 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 section {
   min-height: 100vh;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   font-family: sans-serif;
 }
 
 /* Button Blurred */
-
 .btn-blurred__wrapper {
   position: relative;
   pointer-events: all;
@@ -31,7 +44,7 @@ section {
   font-family: inherit;
   outline: none;
   cursor: pointer;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .btn-blurred__wrapper:before {
@@ -65,32 +78,24 @@ section {
   z-index: 2;
 }
 
-.btn-blurred__text:last-child {
+/* .btn-blurred__text:last-child {
   position: absolute;
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, 200%);
-      -ms-transform: translate(-50%, 200%);
-          transform: translate(-50%, 200%);
-  width: -webkit-max-content;
-  width: -moz-max-content;
+  transform: translate(-50%, 200%);
   width: max-content;
   color: white;
   z-index: 2;
-}
+} */
 
 .btn-blurred__wrapper:hover:before {
   -webkit-filter: blur(26px);
           filter: blur(26px);
 }
 
-.btn-blurred__wrapper:hover .btn-blurred__text:last-child {
-  -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
+/* .btn-blurred__wrapper:hover .btn-blurred__text:last-child {
+  transform: translate(-50%, -50%);
 }
 .btn-blurred__wrapper:hover .btn-blurred__text:first-child {
-  -webkit-transform: translateY(-200%);
-      -ms-transform: translateY(-200%);
-          transform: translateY(-200%);
-}
+  transform: translateY(-200%);
+} */
