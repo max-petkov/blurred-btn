@@ -14,13 +14,56 @@
         <div class="btn-blurred__wrapper">
             <button class="btn-blurred">
                 <span class="btn-blurred__text">Build with us</span>
-                <span class="btn-blurred__text">Build with us</span>
+                <!-- <span class="btn-blurred__text">Build with us</span> -->
             </button>
             <span class="blurred__bg"></span>
         </div>
 
     </section>
 
+    <script>
+        function magnetEffect(prop) {
+  const areas = document.querySelectorAll(prop.area);
+  const movement = !prop.movement ? 0.6 : prop.movement;
+  document.documentElement.style.setProperty("--ease-magnet", prop.ease + "s");
+
+  function animate(e, area, el) {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const areaRect = area.getBoundingClientRect();
+    const elRect = el.getBoundingClientRect();
+    const halfDiff = Math.abs(areaRect.width - areaRect.height) / 2;
+    const relX = e.pageX - areaRect.left - halfDiff;
+    const relY = e.pageY - areaRect.top;
+    const x = (relX - areaRect.width / 2 + elRect.width / 3) * movement;
+    const y = (relY - areaRect.height / 2 - scrollTop) * movement;
+
+    el.style.transform = `translate(${x}px, ${y}px)`;
+  }
+
+  areas.forEach((area) => {
+    const el = area.querySelector(prop.element);
+
+    if (prop.areaSize > 0) area.style.padding = prop.areaSize + "px";
+
+    area.addEventListener("mousemove", function (e) {
+      animate(e, area, el);
+    });
+
+    area.addEventListener("mouseleave", function (e) {
+      el.style.transform = `translate(0px, 0px)`;
+    });
+  });
+}
+
+magnetEffect({
+  element: ".btn-blurred__text",
+  area: ".btn-blurred",
+  areaSize: 24,
+  movement: 0.2,
+  ease: 0.4,
+});
+
+     </script>
 </body>
 
 </html>
